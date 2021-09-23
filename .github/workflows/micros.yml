@@ -23,6 +23,5 @@ jobs:
 
       - name: Micros
         run: |
-          cd
           go build ./...
           go test ./...
