@@ -17,7 +17,7 @@ type Project struct {
 	Path string
 }
 
-// New new a project from remote repo.
+// New . new a project from remote repo.
 func (p *Project) New(ctx context.Context, dir string, layout string, branch string) error {
 	to := path.Join(dir, p.Name)
 	if _, err := os.Stat(to); !os.IsNotExist(err) {
@@ -38,7 +38,7 @@ func (p *Project) New(ctx context.Context, dir string, layout string, branch str
 	}
 	fmt.Printf("🚀 Creating service %s, layout repo is %s, please wait a moment.\n\n", p.Name, layout)
 	repo := base.NewRepo(layout, branch)
-	if err := repo.CopyTo(ctx, to, p.Path, []string{".git", ".github", "go.mod", "go.sum", "third_party"}); err != nil {
+	if err := repo.CopyTo(ctx, to, p.Path, []string{".git", ".github", "third_party"}); err != nil {
 		return err
 	}
 	base.Tree(to, dir)
@@ -47,8 +47,7 @@ func (p *Project) New(ctx context.Context, dir string, layout string, branch str
 	fmt.Print("💻 Use the following command to start the project 👇:\n\n")
 
 	fmt.Println(color.WhiteString("$ cd %s", p.Name))
-	fmt.Println(color.WhiteString("$ go generate ./..."))
-	fmt.Println(color.WhiteString("$ go build -o ./bin/ ./... "))
-	fmt.Println(color.WhiteString("$ ./bin/%s -conf ./configs\n", p.Name))
+	fmt.Println(color.WhiteString("$ make init"))
+	fmt.Println(color.WhiteString("$ bash scripts/start.sh\n"))
 	return nil
 }

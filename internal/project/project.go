@@ -25,8 +25,8 @@ var (
 )
 
 func init() {
-	if repoURL = os.Getenv("KRATOS_LAYOUT_REPO"); repoURL == "" {
-		repoURL = "http://112.126.91.233:8090/jiahui/365micros-layout.git"
+	if repoURL = os.Getenv("LAYOUT_REPO"); repoURL == "" {
+		repoURL = "http://112.126.91.233:8090/jiahui/go-layout.git"
 	}
 	CmdNew.Flags().StringVarP(&repoURL, "repo-url", "r", repoURL, "layout repo")
 	CmdNew.Flags().StringVarP(&branch, "branch", "b", branch, "repo branch")
