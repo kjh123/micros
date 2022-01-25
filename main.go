@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/kjh123/micros/internal/project"
-	"github.com/kjh123/micros/internal/proto"
 	"github.com/kjh123/micros/internal/run"
 	"github.com/kjh123/micros/internal/upgrade"
 	"log"
@@ -11,13 +10,12 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "micro",
+	Use:     "micros",
 	Version: "v1.0.0",
 }
 
 func init() {
 	rootCmd.AddCommand(project.CmdNew)
-	rootCmd.AddCommand(proto.CmdProto)
 	rootCmd.AddCommand(run.CmdRun)
 	rootCmd.AddCommand(upgrade.CmdUpgrade)
 }

@@ -17,14 +17,7 @@ var CmdUpgrade = &cobra.Command{
 
 // Run upgrade the micros tools.
 func Run(cmd *cobra.Command, args []string) {
-	err := base.GoInstall(
-		"github.com/kjh123/micros",
-		"github.com/go-kratos/kratos/cmd/protoc-gen-go-http/v2",
-		"github.com/go-kratos/kratos/cmd/protoc-gen-go-errors/v2",
-		"google.golang.org/protobuf/cmd/protoc-gen-go",
-		"google.golang.org/grpc/cmd/protoc-gen-go-grpc",
-		"github.com/envoyproxy/protoc-gen-validate",
-	)
+	err := base.GoInstall("github.com/kjh123/micros")
 	if err != nil {
 		fmt.Println(err)
 	}
