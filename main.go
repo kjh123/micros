@@ -11,7 +11,7 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:     "micros",
-	Version: "v1.0.0",
+	Version: "v1.0.2",
 }
 
 func init() {
